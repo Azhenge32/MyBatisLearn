@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Azhen on 2017/7/20.
@@ -29,9 +31,14 @@ public class ConfigByCode {
             sqlSession = sqlSessionFactory.openSession();
 
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
-            Role role = roleMapper.getRole(1L);
-            //System.out.println(role.getRoleName());
-            System.out.println(roleMapper.find().size());
+           /* Role role = roleMapper.getRole(1L);
+            System.out.println(role.getRoleName());*/
+           Map<String, Object> param = new HashMap<String, Object>();
+           param.put("roleName","Azhen");
+           param.put("note","Hello");
+            param.put("note1","Hello");
+            roleMapper.saveRole(param);
+            //System.out.println(roleMapper.find().size());
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();

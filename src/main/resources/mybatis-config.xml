@@ -28,7 +28,7 @@
     </typeAliases>
 
     <plugins>
-       <plugin interceptor="com.azhen.plugin.QueryLimitInterceptor">
+       <plugin interceptor="com.azhen.plugin.ConnectionHandlerInterceptor">
 
        </plugin>
    </plugins>

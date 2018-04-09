@@ -3,12 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-     <!--<properties resource="config/localhost.properties">
-        <property name="driver" value="${jdbc.driver}" />
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}" />
-    </properties>-->
+    <properties>
+        <property name="dialect" value="mysql" />
+    </properties>
+    <!--<properties resource="config/localhost.properties">
+       <property name="driver" value="${jdbc.driver}" />
+       <property name="url" value="${jdbc.url}" />
+       <property name="username" value="${jdbc.username}"/>
+       <property name="password" value="${jdbc.password}" />
+   </properties>-->
     <settings>
         <!-- Globally enables or disables any caches configured in any mapper under this configuration -->
         <setting name="cacheEnabled" value="true"/>
@@ -20,6 +23,7 @@
         This setting forces generated keys to be used if set to true,
          as some drivers deny compatibility but still work -->
         <setting name="useGeneratedKeys" value="true"/>
+        <setting name="logImpl" value="LOG4J" />
     </settings>
 
     <!-- Continue going here -->
@@ -27,12 +31,12 @@
         <package name="com.azhen.domain" />
     </typeAliases>
 
-    <plugins>
+  <!--  <plugins>
        <plugin interceptor="com.azhen.plugin.ConnectionHandlerInterceptor">
 
        </plugin>
    </plugins>
-
+-->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

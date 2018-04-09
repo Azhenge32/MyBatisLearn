@@ -5,7 +5,15 @@
         select id, role_name AS roleName, note from role WHERE id = #{id}
     </select>
 
+    <select id="findByMap" resultType="Role">
+        select ${map.roleName} from role
+    </select>
+
     <insert id="saveRole">
-        insert INTO role(role_name, note) VALUE (#{roleName},#{note})
+        insert INTO role(role_name, age, create_time) VALUE (#{roleName},#{age}, #{createTime})
+    </insert>
+
+    <insert id="saveRoleByMap">
+        insert INTO role(role_name, age, create_time,update_time, long_time) VALUE (#{map.roleName},#{map.age}, #{map.createTime}, #{map.createTime}, #{map.longTime})
     </insert>
 </mapper>

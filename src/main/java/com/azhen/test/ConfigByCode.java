@@ -9,6 +9,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,11 +37,28 @@ public class ConfigByCode {
            /* Role role = roleMapper.getRole(1L);
             System.out.println(role.getRoleName());*/
            Map<String, Object> param = new HashMap<String, Object>();
-           param.put("roleName","Azhen");
-           param.put("note","Hello");
-            param.put("note1","Hello");
-            roleMapper.saveRole(param);
-            //System.out.println(roleMapper.find().size());
+         /*  param.put("roleName","Azhen");
+           param.put("createTime",new Date());
+           param.put("age",11);
+            //roleMapper.saveRole(param);
+            roleMapper.saveRoleByMap(param);
+*/
+            param = new HashMap<String, Object>();
+            Date date = new Date();
+            param.put("roleName","Azhen");
+            param.put("createTime", date);
+            param.put("longTime",Instant.now().getEpochSecond());
+            param.put("age",11);
+            //roleMapper.saveRole(param);
+            roleMapper.saveRoleByMap(param);
+
+            param = new HashMap<String, Object>();
+            param.put("roleName","Azhen");
+            param.put("createTime", LocalDateTime.now());
+            param.put("age",11);
+            //roleMapper.saveRole(param);
+            //roleMapper.saveRoleByMap(param);
+
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.azhen.mapper;
 
 import com.azhen.domain.Role;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -15,5 +16,9 @@ public interface RoleMapper {
     @Select("select * from role")
     List<Role> find();
 
+    List<Role> findByMap(@Param("map") Map<String, Object> param);
+
     int saveRole(Map<String, Object> param);
+
+    int saveRoleByMap(@Param("map") Map<String, Object> param);
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.azhen.mapper.SaurerRepository">
+    <insert id="save">
+        INSERT INTO ${table}
+        <foreach collection="columns" item="column" open="(" close=")" separator=",">
+            [${column}]
+        </foreach>
+        VALUES
+        <foreach collection="valueList" item="propList" separator=",">
+            <foreach collection="propList" item="prop" open="(" close=")" separator=",">
+                #{prop}
+            </foreach>
+        </foreach>
+    </insert>
+</mapper>
